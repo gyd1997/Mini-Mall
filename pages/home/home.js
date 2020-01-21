@@ -2,6 +2,9 @@ import {
   getMultiData,
   getGoodsData
 } from '../../service/home.js'
+
+const types = ['pop', 'new', 'sell']
+
 Page({
 
   data: {
@@ -12,7 +15,8 @@ Page({
       'pop': {page: 0, list: []},
       'new': {page: 0, list: []},
       'sell': {page: 0, list: []}
-    }
+    },
+    currentType: 'pop'
   },
 
   onLoad: function (options) {
@@ -22,7 +26,7 @@ Page({
     // 2.请求商品数据
     this._getGoodsData('pop')
     this._getGoodsData('new')
-    // this._getGoodsData('sell')
+    this._getGoodsData('sell')
   },
 
   //------------- 请求轮播图及推荐数据----------------
@@ -62,6 +66,8 @@ Page({
   //------------- 处理 tab 点击----------------------
   handleTabClick(e) {
     const index = e.detail.index
-    console.log(index)
+    this.setData({
+      currentType: types[index]
+    })
   }
 })

@@ -9,3 +9,6 @@
 
 <!-- 4. tab-control -->
 <my-tab-control titles="{{titles}}" bind:tabClick="handleTabClick"/>
+
+<!-- 5. 展示商品数据 -->
+<my-goods goods="{{goods[currentType].list}}"/>
