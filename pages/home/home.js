@@ -4,6 +4,7 @@ import {
 } from '../../service/home.js'
 
 const types = ['pop', 'new', 'sell']
+const TOP_DISTANCE = 1000
 
 Page({
 
@@ -16,7 +17,10 @@ Page({
       'new': {page: 0, list: []},
       'sell': {page: 0, list: []}
     },
-    currentType: 'pop'
+    currentType: 'pop',
+    showBackTop: false,
+    isTabFixed: false,
+    tabScrollTop: 0
   },
 
   onLoad: function (options) {
@@ -69,5 +73,31 @@ Page({
     this.setData({
       currentType: types[index]
     })
+  },
+
+  handleImgLoad() {
+    wx.createSelectorQuery().select('#tab-control').boundingClientRect(rect => {
+      this.data.tabScrollTop = rect.top
+    }).exec()
+  },
+
+  onReachBottom() {
+    this._getGoodsData(this.currentType)
+  },
+
+  onPageScroll(options) {
+    const scroll = options.scrollTop
+    const flag = scroll >= TOP_DISTANCE
+    if (flag != this.data.showBackTop) {
+      this.setData({
+        showBackTop: flag
+      })
+    }
+    const flag2 = scroll >= this.data.tabScrollTop
+    if(flag2 != this.data.isTabFixed) {
+      this.setData({
+        isTabFixed: flag2
+      })
+    }
   }
 })

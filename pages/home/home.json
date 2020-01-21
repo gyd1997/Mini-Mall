@@ -3,6 +3,7 @@
     "my-swiper": "/components/my-swiper/my-swiper",
     "my-tab-control": "/components/my-tab-control/my-tab-control",
     "my-goods": "/components/my-goods/my-goods",
+    "my-back-top": "/components/my-back-top/my-back-top",
     "my-recommend": "./childCpns/my-recommend/my-recommend",
     "my-popular": "./childCpns/my-popular/my-popular"
   },

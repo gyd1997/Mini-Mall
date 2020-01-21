@@ -2,13 +2,21 @@
 <my-swiper list="{{banners}}"/>
 
 <!-- 2.推荐数据展示 -->
-<my-recommend recommends="{{recommends}}"/>
+<my-recommend recommends="{{recommends}}" bind:imgLoad="handleImgLoad"/>
 
 <!-- 3.本周流行 -->
 <my-popular/>
 
 <!-- 4. tab-control -->
-<my-tab-control titles="{{titles}}" bind:tabClick="handleTabClick"/>
+<my-tab-control 
+  id="tab-control"
+  titles="{{titles}}" 
+  bind:tabClick="handleTabClick"
+  class="{{isTabFixed ? 'fixed' : ''}}"/>
+<my-tab-control titles="{{titles}}" wx:if="{{isTabFixed}}"/>
 
 <!-- 5. 展示商品数据 -->
 <my-goods goods="{{goods[currentType].list}}"/>
+
+<!-- 6. 回到顶部 -->
+<my-back-top wx:if="{{showBackTop}}"/>

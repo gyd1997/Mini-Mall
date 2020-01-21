@@ -15,7 +15,7 @@ image {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -14rpx;
+  bottom: -10rpx;
 }
 
 .title {
